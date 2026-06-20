@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-display), 'Geist Fallback';
+  --font-sans: var(--font-geist-sans), 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --color-brand: var(--brand);
+  --color-neon: var(--neon);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* vivid cornflower-blue glass theme (reference gradient, hue ~258) */
+  --background: oklch(0.9 0.05 258);
+  --foreground: oklch(0.27 0.04 262);
+  /* frosted white glass cards */
+  --card: oklch(0.995 0.006 258);
+  --card-foreground: oklch(0.27 0.04 262);
+  --popover: oklch(0.995 0.006 258);
+  --popover-foreground: oklch(0.27 0.04 262);
+  /* near-black pill buttons */
+  --primary: oklch(0.24 0.05 262);
+  --primary-foreground: oklch(0.98 0.008 258);
+  --secondary: oklch(0.96 0.02 258);
+  --secondary-foreground: oklch(0.27 0.04 262);
+  --muted: oklch(0.955 0.02 258);
+  --muted-foreground: oklch(0.52 0.04 260);
+  --accent: oklch(0.88 0.07 258);
+  --accent-foreground: oklch(0.27 0.04 262);
+  --destructive: oklch(0.585 0.205 23);
+  --border: oklch(0.89 0.025 258);
+  --input: oklch(0.89 0.025 258);
+  --ring: oklch(0.56 0.21 258);
+  --chart-1: oklch(0.56 0.21 258);
+  --chart-2: oklch(0.62 0.17 248);
+  --chart-3: oklch(0.68 0.15 270);
+  --chart-4: oklch(0.74 0.14 235);
+  --chart-5: oklch(0.5 0.2 262);
+  --radius: 0.875rem;
+  /* 미국식 색상 컨벤션: 상승 초록 / 하락 빨강 */
+  --up: oklch(0.585 0.16 150);
+  --down: oklch(0.585 0.205 23);
+  /* cornflower-blue brand accent */
+  --brand: oklch(0.56 0.21 258);
+  --neon: oklch(0.56 0.21 258);
+  --sidebar: oklch(0.97 0.025 258);
+  --sidebar-foreground: oklch(0.27 0.04 262);
+  --sidebar-primary: oklch(0.56 0.21 258);
+  --sidebar-primary-foreground: oklch(0.98 0.008 258);
+  --sidebar-accent: oklch(0.88 0.07 258);
+  --sidebar-accent-foreground: oklch(0.27 0.04 262);
+  --sidebar-border: oklch(0.89 0.025 258);
+  --sidebar-ring: oklch(0.56 0.21 258);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply text-foreground;
+    background-color: var(--background);
+    /* dramatic deep-blue → indigo gradient backdrop */
+    background-image:
+      radial-gradient(120% 90% at 0% 0%, oklch(0.42 0.2 268) 0%, transparent 55%),
+      radial-gradient(110% 90% at 100% 30%, oklch(0.5 0.21 250) 0%, transparent 60%),
+      linear-gradient(155deg, oklch(0.45 0.22 270) 0%, oklch(0.62 0.2 256) 45%, oklch(0.84 0.1 256) 100%);
+    background-attachment: fixed;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  /* frosted-glass card (finance2) */
+  .glass {
+    background-color: color-mix(in oklch, var(--card) 92%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid color-mix(in oklch, white 80%, transparent);
+    box-shadow: 0 18px 44px -18px oklch(0.42 0.1 280 / 0.55);
+  }
+  .glass-inset {
+    background-color: color-mix(in oklch, white 72%, transparent);
+    border: 1px solid color-mix(in oklch, white 85%, transparent);
+  }
+}
