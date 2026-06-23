@@ -22,7 +22,12 @@ export default async function Page() {
 
   // 미들웨어가 비로그인 진입을 막아주지만, 타입 안전을 위해 fallback 처리
   const email = user?.email ?? ""
-  const displayName = email.split("@")[0] || "Guest"
+
+  // 닉네임이 있으면 우선 사용, 없으면 이메일 앞부분
+  const { data: profile } = user
+    ? await supabase.from("profiles").select("nickname").eq("id", user.id).single()
+    : { data: null }
+  const displayName = profile?.nickname || email.split("@")[0] || "Guest"
 
   return (
     <AppShell>
