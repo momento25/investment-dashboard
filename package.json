@@ -11,6 +11,8 @@
   "dependencies": {
     "@ai-sdk/react": "^3.0.208",
     "@base-ui/react": "^1.5.0",
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.108.2",
     "@vercel/analytics": "1.6.1",
     "ai": "^6.0.206",
     "class-variance-authority": "^0.7.1",
